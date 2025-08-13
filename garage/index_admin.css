@@ -1,0 +1,177 @@
+img {border: 0px; padding: 0px; margin: 0px}
+body {font-size: 14px; color: #333; margin: 0px; font-family: 'ABeeZee', 'Noto Sans KR', 'Abril Fatface', 'Alfa Slab One', 'Source Serif Pro', sans-serif}
+a {color: #0b86f2; cursor: pointer; text-decoration: underline}
+
+.wrap {width: 1180px; margin: 0px auto;}
+.clear {clear: both}
+.no_dis {display: none}
+.i_cus {cursor: pointer; text-decoration: underline; color: #0078ff}
+
+.bk_bg {display: none; position: fixed; top: 0px; left: 0px; width: 100%; min-height: 100vh; background-image: url('/garage/images/op50.png'); z-index: 1000}
+
+.login_box {width: 345px; margin: calc(35vh - 250px) auto 0px auto}
+.login_txt {font-size: 26px; margin: 5px 0px 50px 0px; text-align: center; color: #0078ff; font-weight: bold}
+
+.ipt_login {width: 313px; height: 48px; border: 1px solid #dfdfdf; border-radius: 5px; margin: 0px 0px 10px 0px; padding: 0px 15px; background-color: white}
+.bt_login_box {width: 345px; height: 50px; border-radius: 5px; margin: 10px 0px 10px 0px; padding: 0px; background-color: #0078ff; color: white; text-align: center; line-height: 50px; font-size: 16px; cursor: pointer}
+
+.search_sel {width: 150px; height: 30px; line-height: 30px; padding: 0px 10px; background-color: #f7f7f7; border: 1px solid #dfdfdf; border-radius: 5px; margin: 0px 10px 0px 0px}
+.search_txt {width: 150px; height: 30px; line-height: 30px; padding: 0px 10px; background-color: white; border: 1px solid #dfdfdf; border-radius: 5px; margin: 0px 10px 0px 0px}
+.search_bt {width: 70px; height: 30px; line-height: 30px; padding: 0px; background-color: #0078ff; border: 1px solid blue; border-radius: 5px; text-align: center; color: white; margin: 0px 10px 0px 0px}
+.search_bt_download {width: 170px; height: 30px; line-height: 30px; padding: 0px; background-color: green; border: 1px solid rgb(14, 81, 14); border-radius: 5px; text-align: center; color: white; margin: 0px 10px 0px 0px}
+
+.signup_w {width: 964px; height: calc(100vh - 60px); padding: 30px 30px; margin: 0px auto; box-shadow: 0px 0px 10px gray; overflow-y: scroll}
+.signup_t_lar {line-height: 26px; font-size: 20px; color: black; margin: 0px 0px 30px 0px; font-weight: bold}
+div.signup_t_lar span {font-size: 11px; color: red; font-weight: normal}
+.signup_t {line-height: 26px; font-size: 14px; color: black; font-weight: bold; margin: 50px 0px 10px 0px;}
+.ipt_signup {height: 28px; line-height: 28px; border: 1px solid #dfdfdf; border-radius: 3px; padding: 0px 2.5%; width: 90%; margin: 0px; font-size: 12px; background-color: #f7f7f7}
+.signup_bt {width: 120px; height: 44px; line-height: 44px; font-size: 16px; background-color: #0078ff; text-align: center; margin: 70px 10px; border-radius: 10px; color: white; cursor: pointer}
+
+.header{height: 50px; line-height: 50px; background-color: #1b57be; padding: 0px 15px; color: white}
+.header_logo {float: left; font-size: 18px; color: white; font-weight: bold}
+.header_bt {float: right; padding: 0px 10px; line-height: 24px; height: 24px; border: 1px solid #06255a; background-color: #0c3c90; border-radius: 3px; color: white; margin: 12px; cursor: pointer}
+
+.sidebar {float: left; width: 200px; height: calc(100vh - 50px); background: white}
+.sidebar_t {height: 50px; line-height: 50px; padding: 0px 20px; background-color: white; border-bottom: 1px solid #dfdfdf; color: black; font-size: 15px; margin: 0px 0px 10px 0px}
+.sidebar_m {height: 40px; line-height: 40px; padding: 0px 20px; font-size: 14px; color: #717171; cursor: pointer}
+.sidebar_m_s {height: 40px; line-height: 40px; padding: 0px 20px; font-size: 14px; color: black; font-weight: bold; cursor: pointer}
+
+.rarea {float: left; width: calc(100% - 201px); min-height: calc(100vh - 50px); border-left: 1px solid #dfdfdf}
+
+
+.cont_w {min-height: 80vh; margin: 20px; background: white; padding: 20px; border-radius: 5px}
+.cont_t_lar {line-height: 26px; font-size: 20px; color: black; margin: 0px 0px 30px 0px;}
+.cont_t {line-height: 26px; font-size: 14px; color: black; font-weight: bold; margin: 50px 0px 10px 0px;}
+.cont_bt {float: right; line-height: 32px; height: 32px; background: #1575e3; border-radius: 7px; padding: 0px 20px; color: white; cursor: pointer; font-size: 15px;}
+.cont_bt:hover {box-shadow: 0px 0px 5px #1575e3}
+.cont_tab_s {float: left; font-size: 14px; color: orange; margin: 0px 30px 16px 0px; line-height: 20px;}
+.cont_tab {float: left; font-size: 14px; color: gray; margin: 0px 30px 16px 0px; line-height: 20px;}
+.cont_search {height: 30px; line-height: 30px; padding: 10px 15px; border: 1px solid #dfdfdf; border-radius: 5px; margin: 0px 0px 20px 0px; font-size: 12px;}
+
+
+.bbs_t {height: 46px; line-height: 46px; border-top: 1px solid #dfdfdf; border-bottom: 1px solid #dfdfdf; background-color: #f2f2f2; text-align: center; font-size: 12px}
+.bbs_c {height: 46px; line-height: 46px; border-bottom: 1px solid #dfdfdf; text-align: center; font-size: 12px; overflow: hidden}
+.bbs_img {height: 100px; line-height: 100px; border-bottom: 1px solid #dfdfdf; text-align: center; font-size: 12px; overflow: hidden}
+.bbs_img_s {height: 100px; line-height: 100px; border-bottom: 1px solid #dfdfdf; text-align: center; font-size: 12px; overflow: hidden; font-weight: bold}
+
+.bbs_pic_c {height: 80px; line-height: 80px; border-bottom: 1px solid #dfdfdf; text-align: center; font-size: 12px}
+
+
+.td5 {float: left; width: 5%}
+.td7 {float: left; width: 7%}
+.td8 {float: left; width: 8%}
+.td10 {float: left; width: 10%}
+.td15 {float: left; width: 15%}
+.td20 {float: left; width: 20%}
+.td25 {float: left; width: 25%}
+.td30 {float: left; width: 30%;}
+.td40 {float: left; width: 40%}
+
+.td5_img {float: left; width: 24px; height: 24px; margin: 6px calc(2.5% - 12px); border-radius: 12px; background-position: center; background-size: cover}
+.td10_img {float: left; width: 10%; height: 80px; background-position: center; background-size: cover}
+.td20_img {float: left; width: 20%; height: 24px; margin: 6px calc(2.5% - 12px); border-radius: 12px; background-position: center; background-size: cover}
+
+.td10_fan_img {float: left; width: 10%; height: 36px;background-position: center; background-size: cover}
+.td10_brand_img {float: left; width: 10%; height: 36px;background-position: center; background-size: cover}
+.td10_logo {float: left; width: calc(10% - 20px); background-position: left center; background-size: 24px; padding: 0px 0px 0px 20px; background-repeat: no-repeat; text-align: center}
+.td10_event_img {float: left; width: 10%; height: 100px; background-position: center; background-size: contain; background-repeat: no-repeat; background-color: white}
+
+.td30_bbs {float: left; width: 30%; line-height: 24px; height: 48px; margin: 16px 0px; font-size: 12px; overflow: hidden; text-align: left;}
+
+/* pagenate */
+
+
+.pagenate {float: right; position: relative; left: -50%; margin: 70px 0px 0px 0px; font-size: 12px}
+.pagena_m {float: left; position: relative; left: 50%; min-width: 13px; padding: 0px 5px; margin: 0px 0px 0px 5px; text-align: center; border-radius: 3px; color: #333}
+.pagena_m:hover {cursor: pointer}
+.pagena_m_s {float: left; position: relative; left: 50%; min-width: 13px; padding: 0px 5px; margin: 0px 0px 0px 5px; text-align: center; border-radius: 3px; color: #ff7000}
+
+
+
+/* create box */
+
+.create_w {width: 710px; margin: 150px auto; background-color: white; border-radius: 10px;}
+.create_t {height: 49px; line-height: 50px; border-bottom: 1px solid #dfdfdf; padding: 0px 30px}
+.create_t_t {float: left; font-size: 16px; font-weight: bold}
+.create_t_bt {float: right; font-size: 14px; color: gray; cursor: pointer}
+.create_img {float: left; width: 120px; margin: 30px 0px 30px 30px; color: gray}
+.create_img_t {line-height: 20px; font-size: 12px}
+.create_img_i {width: 120px; height: 120px; background-position: center; background-size: cover; background-color: #f2f2f2; margin: 5px 0px; overflow: hidden}
+.create_img_bt {width: 120px; height: 20px; line-height: 20px; text-align: center; color: white; background-color: #96c5f0; font-size: 10px}
+.create_b {height: 49px; line-height: 50px; border-top: 1px solid #dfdfdf; padding: 0px 0px; margin: 30px 0px 0px 0px}
+
+.create_txt {margin: 10px 0px 5px 30px; font-size: 12px; color: gray}
+.ipt_create_txt {width: calc(100% - 82px); height: 40px; line-height: 40px; border: 1px solid #dfdfdf; padding: 0px 10px; margin: 0px 30px 10px 30px; background-color: #f2f2f2; color: black; font-size: 14px; border-radius: 5px; font-family: 'Noto Sans KR', 'Black Han Sans','Noto Serif KR', 'Do Hyeon', 'Passion One', 'Questrial', 'Abril Fatface', serif;}
+.sel_create_txt {width: calc(60% - 82px); height: 40px; line-height: 40px; border: 1px solid #dfdfdf; padding: 0px 10px; margin: 0px 30px 10px 30px; background-color: #f2f2f2; color: black; font-size: 14px; border-radius: 5px;}
+
+.create_b_bt_s {float: left; width: 120px; height: 28px; line-height: 28px; font-size: 14px; margin: 11px 10px 0px 230px; background-color: orange; color: white; text-align: center; border-radius: 5px; cursor: pointer}
+.create_b_bt {float: left; width: 120px; height: 28px; line-height: 28px; font-size: 14px; margin: 11px 0px 0px 0px; background-color: #a7a3a3; color: white; text-align: center; border-radius: 5px; cursor: pointer}
+
+
+
+/* view */
+
+.view_title {padding: 20px 20px; border-bottom: 1px solid #dfdfdf}
+.view_title_l {float: left; width: 70%}
+
+.view_title_t {line-height: 40px; height: 40px; color: black; font-size: 16px}
+.view_title_b {font-size: 12px; height: 20px; line-height: 20px; color: orange}
+div.view_title_b span {color: #0085ff}
+.view_title_c {font-size: 14px; line-height: 24px}
+
+.view_1 {width: calc(99% - 40px); padding: 20px; height: 172px; border-bottom: 1px solid #dfdfdf}
+.view_2 {float: left; width: calc(50% - 39px); padding: 15px; height: 60px; line-height: 30px; border-top: 1px solid #dfdfdf}
+.view_3 {float: left; width: calc(33% - 30px); padding: 15px; height: 60px; line-height: 30px; border-top: 1px solid #dfdfdf}
+.view_4 {float: left; width: calc(25% - 30px); padding: 15px; height: 60px; line-height: 30px; border-top: 1px solid #dfdfdf}
+.view_5 {float: left; width: calc(20% - 30px); padding: 15px; height: 60px; line-height: 30px; border-top: 1px solid #dfdfdf}
+
+
+.view_1_g {width: calc(99% - 40px); padding: 20px; height: 172px; border-bottom: 1px solid #dfdfdf; background-color: #f2f2f2}
+.view_2_g {float: left; width: calc(66% - 39px); padding: 20px; height: 60px; border-right: 1px solid #dfdfdf; border-bottom: 1px solid #dfdfdf; background-color: #f2f2f2}
+.view_3_g {float: left; width: calc(33% - 40px); padding: 20px; height: 60px; border-right: 1px solid #dfdfdf; border-bottom: 1px solid #dfdfdf; background-color: #f2f2f2}
+
+
+.view_l {float: left; width: 150px; line-height: 40px; border-bottom: 1px solid #dfdfdf;}
+.view_r {float: right; width: calc(100% - 150px); line-height: 40px; height: 40px; border-bottom: 1px solid #dfdfdf}
+
+.view_t {font-size: 14px; height: 30px; line-height: 30px; color: gray}
+.view_b {font-size: 14px; height: 30px; line-height: 30px; color: black; margin: 0px 0px 0px 0px}
+div.view_b span {color: #0085ff}
+div.view_t span {color: red}
+
+.view_bt {width: 120px; height: 24px; line-height: 24px; text-align: center; color: white; background: #728795; border-radius: 4px; margin: 3px; font-size: 10px}
+.view_ipt {width: 240px; border: 1px solid #dfdfdf; height: 24px; line-height: 24px; text-align: left; padding: 0px 5px; color: black; background: #f2f2f2; border-radius: 4px; margin: 2px 3px; font-size: 10px}
+
+.view_pic {float: left; width: 120px; height: 120px; background-position: center; background-size: cover; margin: 10px 10px 0px 0px; border: 1px solid #f2f2f2}
+
+
+.new_user_top {padding: 100px 30px 30px 30px; background-size: cover; background-position: center;}
+.new_user_top_pic {float: left; width: 200px; height: 200px; background-size: cover; background-position: center}
+.new_user_top_info {float: right; width: calc(100% - 290px); height: 140px; background: white; padding: 30px;}
+.new_user_top_info_t {line-height: 20px; font-size: 12px;}
+.new_user_top_info_c {line-height: 50px; font-size: 16px;}
+div.new_user_top_info_c span {font-weight: bold; color: black; font-size: 26px}
+
+.new_user_bbs {margin: 0px 30px 30px 30px; background: white}
+.new_user_bbs_t {font-size: 20px; margin: 20px 0px 10px 30px; font-weight: bold}
+
+
+
+.lefarea {float: left; width: 700px; min-height: 500px; border: 1px solid #e3e3e3; border-radius: 10px}
+.rigarea {float: right; width: calc(100% - 750px)}
+
+
+.ipt_notice {height: 28px; line-height: 28px; border: 1px solid #dfdfdf; border-radius: 3px; padding: 0px 2.5%; width: 90%; margin: 0px; font-size: 12px; background-color: #f7f7f7}
+.txt_notice {height: 208px; line-height: 28px; border: 1px solid #dfdfdf; border-radius: 3px; padding: 0px 2.5%; width: 90%; margin: 0px; font-size: 12px; background-color: #f7f7f7}
+
+
+.opt_w {border: 1px solid #efefef; border-bottom: 0px}
+.opt_w_tr {background-color: #f2f2f2; border-bottom: 1px solid #efefef; line-height: 40px; height: 40px}
+.opt_w_td {border-bottom: 1px solid #efefef; line-height: 40px; height: 40px}
+
+.opt_w_20s {float: left; width: calc(20% - 1px); line-height: 40px; height: 40px; text-align: center; border-right: 1px solid #efefef; background-color: #f2f2f2;}
+.opt_w_20 {float: left; width: calc(20% - 1px); line-height: 40px; height: 40px; text-align: center; border-right: 1px solid #efefef;}
+.opt_w_30 {float: left; width: calc(30% - 1px); line-height: 40px; height: 40px; text-align: center; border-right: 1px solid #efefef;}
+.opt_w_50 {float: left; width: 50%; line-height: 40px; height: 40px; text-align: center;}
+
+.ipt_opt_w {width: calc(100% - 22px); margin: 5px; height: 28px; line-height: 28px; border: 1px solid #dfdfdf; font-size: 16px; text-align: center;}
