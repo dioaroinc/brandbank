@@ -36,7 +36,6 @@ if ($reg_date_raw) {
 
         <?php foreach ($settlements as $row): ?>
 
-            <?=print_r($row)?>
             <div class="tb2_tr">
                 <div class="td25">
                     <input type="checkbox" name="settlement_ids[]" value="<?= $row["num"] ?>" class="tb2_chk">
@@ -70,6 +69,7 @@ if ($reg_date_raw) {
                         class="td_amount_input"
                         data-id="<?= $row["num"] ?>"
                         disabled
+                        onkeyup="readyToRegister()"
                     >
                 </div>
                 <div class="clear"></div>

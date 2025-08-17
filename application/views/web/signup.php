@@ -178,7 +178,7 @@
 </div>
 
 <!-- 완료 팝업 -->
-<div id="signup_box_alert" class="bg_bk_alert">
+<div id="signup_box_alert" class="bg_bk_alert" style="display: none;">
     <div class="bg_bk_alert_x" onclick="shutSignupAlert()"></div>
     <div class="bg_bk_alert_txt">신청이 완료되었습니다.</div>
     <div class="bg_bk_alert_bt" onclick="shutSignupAlert()">확인</div>

@@ -2,7 +2,7 @@
 <div class="container2">
 
     <div class="n_c_title">
-        <div class="n_c_title_name"><?= htmlspecialchars($user->ceo_name); ?>님 </div>
+        <div class="n_c_title_name"><?= htmlspecialchars($user->ceo_name); ?>(<?= htmlspecialchars($user->brand_name); ?>)님 </div>
         <div class="n_c_title_logout"><a href="javascript:void(0);" onclick="confirmLogout()"><img src="/garage/images/img_logout.png" /></a></div>
         <div class="n_c_title_myinfo"><a href="/web/myinfo"><img src="/garage/images/img_myinfo.png" /></a></div>
         <div class="clear"></div>
@@ -20,7 +20,8 @@
         <div class="n_mypage_m_r"><?= number_format($total_paid) ?> <span>원</span></div>
         <div class="clear"></div>
     </div>
-    <div class="n_mypage_m3">
+<!--removed by DJK 250818-->
+    <!-- <div class="n_mypage_m3">
         <div class="n_mypage_m_l">이번 달 선정산 지급액</div>
         <div class="n_mypage_m_r">0 <span>원</span></div>
         <div class="clear"></div>        
@@ -29,7 +30,7 @@
         <div class="n_mypage_m_l">이번 달 남은 정산액</div>
         <div class="n_mypage_m_r">0 <span>원</span></div>
         <div class="clear"></div>        
-    </div>
+    </div> -->
     <div class="clear"></div>
 
 

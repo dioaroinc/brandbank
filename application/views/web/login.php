@@ -100,6 +100,19 @@
     }
 </script>
 
+<div id="popup_type_0" class="bg_bk_alert_new5">
+    <div class="bg_bk_alert_new_title_t">로그아웃</div>
+    <div class="bg_bk_alert_new_x" onclick="popupType(0)"></div>
+    <div class="clear"></div>
+
+    <div class="bg_bk_alert_new_title_c">로그아웃<br />되었습니다.</div>
+    <div class="bg_bk_alert_new_title_img">
+        <img src="/garage/images/img_login.png" />
+    </div>
+    <div class="clear"></div>
+</div>
+
+
 <div id="popup_type_1" class="bg_bk_alert_new5">
     <div class="bg_bk_alert_new_title_t">회원가입 진행상황</div>
     <div class="bg_bk_alert_new_x" onclick="popupType(1)"></div>
@@ -113,7 +126,6 @@
     <div class="bg_bk_alert_txt_new_w">
         <div class="bg_bk_alert_txt" style="white-space: pre-line;">팝업내용입니다.</div>
     </div>
-
 </div>
 
 <script>
@@ -126,9 +138,17 @@
 <?php if ($this->session->flashdata('custom_popup')): ?>
 <script>
 window.onload = function() {
+
     const msg = "<?= $this->session->flashdata('custom_popup'); ?>";
-    $("#popup_type_1 .bg_bk_alert_txt").text(msg);
-    $("#popup_type_1").fadeIn();
+
+    if(msg == "로그아웃 되었습니다."){
+        $("#popup_type_0").fadeIn();
+    }
+    else{
+        $("#popup_type_1 .bg_bk_alert_txt").text(msg);
+        $("#popup_type_1").fadeIn();
+    }
+    
 };
 </script>
 <?php endif; ?>
