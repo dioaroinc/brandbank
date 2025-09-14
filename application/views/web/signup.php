@@ -12,8 +12,9 @@
         <!-- 아이디 -->
         <div class="signup_box_t">아이디</div>
         <input type="text" class="signup_box_c" name="user_id" placeholder="아이디를 입력해 주세요." required />
-        <!-- <input type="button" class="signup_box_c_bt" id="check_user_id_btn" value="중복 확인" /> -->
-        <!-- <div class="input_guide_text">아이디는 5자 이상</div> -->
+        <input type="button" class="signup_box_c_bt" id="check_user_id_btn" value="중복 확인" />
+        <div class="clear"></div>
+        <br />
 
         <!-- 비밀번호 -->
         <div class="signup_box_t">비밀번호</div>

@@ -1,6 +1,7 @@
 img {border: 0px; padding: 0px; margin: 0px}
 body {font-size: 14px; color: black; margin: 0px; font-family: 'Noto Sans KR';}
 .body_wh {font-size: 14px; color: black; margin: 0px; background-color: white; font-family: 'Noto Sans KR'; padding: 0px}
+.m_hide {display: none}
 
 a {text-decoration: none; color: black}
 
@@ -8,6 +9,7 @@ a {text-decoration: none; color: black}
 .wrap_white {width: 1440px; min-height: 100vh; background-color: white; padding: 0px calc(50% - 720px)}
 .container {width: 1100px; margin: 80px auto;}
 .container2 {width: 1440px; margin: 80px auto;}
+.container_adm {width: 1600px; margin: 80px auto}
 
 .bgcover {background-size: cover; background-position: center; background-repeat: no-repeat;}
 .bgcontain {background-size: contain; background-position: center; background-repeat: no-repeat;}
@@ -91,6 +93,9 @@ div.header_logout a {text-decoration: none; color: #333;}
 .footer_line {color: #d9d9d9; line-height: 28px; font-size: 14px; border-top: 1px solid gray; margin: 20px 0px 0px 0px; padding: 40px 0px 0px 0px}
 div.footer_terms_l a {color: white}
 
+.footer_term_r_m {float: left; margin: 0px 20px; height: 30px; line-height: 30px;}
+div.footer_term_r_m img {height: 30px; line-height: 30px; margin: 0px; border-radius: 5px;}
+
 .login_box {position: relative; width: 100%; max-width: 1920px; margin: 0px auto; padding: 0px; height: 100vh; background-color: white;}
 .login_box_l {float: left; width: 500px; height: 400px; margin: calc(50vh - 250px) calc(22.5% - 250px)}
 .login_box_r {float: right; width: 55%; height: 100vh; background-image: url('/garage/images/login_box_r.png'); background-size: cover; background-position: center; background-repeat: no-repeat;}
@@ -167,10 +172,12 @@ div.n_c_title_img img {height: 38px; margin: 1px 0px}
 .n_mypage_m3 {float: left; width: 630px; height: 122px; line-height: 122px; border-radius: 10px; padding: 0px 40px; margin: 0px 0px 20px 0px; background-image: url('/garage/images/bg_purple.png'); background-size: cover; background-position: center; color: white}
 .n_mypage_m4 {float: right; width: 630px; height: 122px; line-height: 122px; border-radius: 10px; padding: 0px 40px; margin: 0px 0px 20px 0px; background-image: url('/garage/images/bg_orange.png'); background-size: cover; background-position: center; color: white}
 .n_mypage_m_l {float: left; font-size: 18px}
+div.n_mypage_m_l span {font-size: 14px}
 .n_mypage_m_r {float: right; font-size: 42px; font-weight: bold;}
 div.n_mypage_m_r span {font-size: 18px; font-weight: normal;}
 
-.n_mypage_date {float: left; height: 50px; line-height: 50px; border: 1px solid #e2e2e2; border-radius: 10px; padding: 0px 20px 0px 50px; background-image: url('/garage/images/ic_color_calendar.png'); background-size: 24px; background-position: 10px center; background-repeat: no-repeat; background-color: white; font-weight: bold; font-size: 16px;}
+.n_mypage_day {float: left; height: 50px; line-height: 50px; border: 1px solid #e2e2e2; border-radius: 10px; padding: 0px 20px 0px 20px; background-color: white; font-weight: bold; font-size: 16px; color: gray}
+.n_mypage_date {float: left; height: 70px; line-height: 70px; border: 1px solid #e2e2e2; border-radius: 10px; padding: 0px 20px 0px 50px; background-image: url('/garage/images/ic_color_calendar.png'); background-size: 24px; background-position: 10px center; background-repeat: no-repeat; background-color: white; font-weight: bold; font-size: 20px;}
 .n_mypage_date_lef {font-size: 32px; font-weight: bold; margin: 25px 0px 40px 0px; color: black}
 .n_mypage_date_lef_span {background: linear-gradient(90deg, #DD0501, #FFA218); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 40px}
 
@@ -338,3 +345,24 @@ div.howto img {float: left; width: 100%; margin: 0px 0px 400px 0px}
 .nsignup_wrap {background-color: #fbfbfb; border: 1px solid #e2e2e2; border-radius: 20px; padding: 35px 35px 15px 35px; margin: 35px 0px 100px 0px}
 
 .input_guide_text {font-size: 22px; color: #bebebe; margin: 12px 0px 20px 0px}
+
+.t_bold {font-weight: bold;}
+
+.n_tbw {background-color: #fbfbfb; border-top-left-radius: 15px; border-top-right-radius: 15px; padding: 60px; margin: 0px 0px 60px 0px}
+.n_tbt {height: 66px; line-height: 66px; background-color: white; border-radius: 10px; box-shadow: 0px 0px 10px #dfdfdf; text-align: center;}
+.n_tbb {line-height: 66px; border-bottom: 1px solid #dfdfdf; text-align: center;}
+.n_tbb2 {line-height: 66px; text-align: center;}
+
+.n_td33 {float: left; width: 33.3%}
+.n_td25 {float: left; width: 25%}
+.n_tbw_d {background-color: white; border-radius: 20px; padding: 60px; margin: 30px 0px 0px 0px}
+
+.n_trt {height: 64px; line-height: 64px; background: #f9f9f9; color: #7e7e7e; border-radius: 15px; text-align: center;}
+.n_trt2 {height: 64px; line-height: 64px; background: #dfdfdf; color: #7e7e7e; border-top-left-radius: 15px; border-top-right-radius: 15px; text-align: center; color: black}
+.n_tr {height: 66px; line-height: 66px; border-bottom: 1px solid #dfdfdf; text-align: center;}
+.n_tr2 {height: 66px; line-height: 66px; border-bottom: 1px solid #dfdfdf; background-color: white; text-align: center;}
+
+.n_td10 {float: left; width: 10%;}
+.n_td15 {float: left; width: 15%;}
+.n_td20 {float: left; width: 20%;}
+.n_td_down {float: left; width: 5%; height: 44px; line-height: 44px; border: 1px solid #dfdfdf; text-align: center; border-radius: 10px; margin: 9px 2.5%; cursor: pointer;}

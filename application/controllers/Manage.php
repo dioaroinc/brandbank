@@ -935,7 +935,9 @@ class Manage extends CI_Controller {
             $this->db->select('pre_settlement_date');
             $this->db->where('member_id', $row->member_id);
             $this->db->where('brand_name', $row->brand_name);
+            $this->db->where('shopping_mall', $row->shopping_mall);
             $this->db->where('pre_settlement_date <', $row->pre_settlement_date);
+            $this->db->where('status IN(1, 2)'); // 승인된 것 중에서
             $this->db->order_by('pre_settlement_date', 'DESC');
             $this->db->limit(1);
             $prev = $this->db->get('pre_settlements')->row();
@@ -955,7 +957,7 @@ class Manage extends CI_Controller {
         ];
 
         $this->load->view('layout_manage/header');
-        $this->load->view('manage/pre_settlement',   $data);
+        $this->load->view('manage/pre_settlement', $data);
     }
 
 

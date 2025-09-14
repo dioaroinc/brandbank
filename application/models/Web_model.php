@@ -357,7 +357,7 @@ class Web_model extends CI_Model {
         foreach ($shopping_malls as $shopping_mall) {
             # 쇼핑몰별 선정산 날짜를 찾기
             $select_first_day = "
-                SELECT MAX(pre_settlement_date) + INTERVAL 1 DAY AS shopping_mall
+                SELECT MAX(pre_settlement_date) AS shopping_mall
                 FROM pre_settlements
                 WHERE member_id = ?
                 AND shopping_mall = ?
@@ -365,15 +365,16 @@ class Web_model extends CI_Model {
                 AND pre_settlement_date > ?
                 order by pre_settlement_date ASC";
             $settlement_day = $this->db->query($select_first_day, [$member_id, $shopping_mall['shopping_mall'], $firstDay])->row()->shopping_mall;
-            $first_day = max($firstDay, $this->db->query($select_first_day, [$member_id, $shopping_mall['shopping_mall'], $firstDay])->row()->shopping_mall);
+            $first_day = max($firstDay, $settlement_day);
 
             # 쇼핑몰별 선정산 금액을 찾기
             $select_pre_settlement_amount = "
-                SELECT COALESCE(SUM(pre_settlement_amount), 0) AS pre_settlement_amount
+                SELECT COALESCE(pre_settlement_amount, 0) AS pre_settlement_amount
                 FROM pre_settlements
                 WHERE member_id = ?
                 AND shopping_mall = ?
-                AND pre_settlement_date > ?";
+                AND pre_settlement_date > ?
+                limit 1";
             $pre_settlement_amount = $this->db->query($select_pre_settlement_amount, [$member_id, $shopping_mall['shopping_mall'], $first_day])->row()->pre_settlement_amount;
             //var_dump($shopping_mall['shopping_mall'], $first_day, $pre_settlement_amount); // 쇼핑몰과 첫 선정산 날짜, 선정산 금액 출력
 

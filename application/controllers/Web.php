@@ -14,6 +14,8 @@
     }
 
     public function index() {
+
+
         $this->load->library('session');
 
         if ($this->session->userdata('user_id')) {
@@ -21,7 +23,8 @@
             $member_id = $this->session->userdata('member_id');
 
             $user = $this->Web_model->get_user_by_id($user_id);
-
+            $brand_name = $user->brand_name;
+            
             if (!$user) {
                 show_error('사용자 정보를 찾을 수 없습니다.', 404);
             }
@@ -81,6 +84,28 @@
                 'pagination' => $this->pagination->create_links()
             ];
 
+
+
+            // by DJK 250818 
+            // for period
+
+            $start_month = date("Y-m");
+            $end_month = date("Y-m", strtotime("+1 month", strtotime($start_month)));
+            $last_month = date("Y-m", strtotime("-1 month", strtotime($start_month)));
+            $start_day = $start_month."-01";
+            $last_day = $last_month."-01";
+            $end_day = $end_month."-01";
+
+            $data['settlements_all'] = $this -> common_model -> make_list("pre_settlements","*"," where member_id = '$member_id' and pre_settlement_date >= '$start_day' and pre_settlement_date < '$end_day'");
+            $total_requested = $this -> common_model -> rowfinder("monthly_total","sum(final_settlement) as st"," where brand_name = '$brand_name' and settlement_month >= '$last_day' and settlement_month < '$start_day'");
+            $total_paid = $this -> common_model -> rowfinder("pre_settlements","sum(application_amount) as st"," where member_id = '$member_id' and pre_settlement_date >= '$start_day' and pre_settlement_date < '$end_day' and status = 2");
+ 
+            $data['total_requested'] = $total_requested -> st;
+            $data['total_paid'] = $total_paid -> st;
+
+            $data['last_month'] = $last_month;
+            $data['now_month'] = $start_month;
+                        
             $this->load->view('layout/header', $data);
             $this->load->view('web/mypage', $data);
             $this->load->view('layout/footer');
@@ -465,7 +490,31 @@
         echo json_encode(["status" => "success"]);
     }
 
+
+    function nmypage(){
+
+        if (!$this->session->userdata('logged_in')) {
+            redirect('/web/login');
+        }
+
+        $user_id = $this->session->userdata('user_id');
+        $user = $this->Web_model->get_user_by_id($user_id);
+        $member_id = $this->session->userdata('member_id');
+        $brand_name = $user->brand_name;
+
+        if (!$user) {
+            show_error('사용자 정보를 찾을 수 없습니다.', 404);
+        }
+
+        $this->load->view('layout/header');
+        $this->load->view('web/nmypage', $data);
+        $this->load->view('layout/footer');
+
+
+    }
+
     public function mypage() {
+
         if (!$this->session->userdata('logged_in')) {
             redirect('/web/login');
         }
@@ -523,6 +572,8 @@
         $year = date('Y');
         $month = date('m');
 
+
+            
         $total_requested = $this->Web_model->get_monthly_total_amount($member_id, [1, 2, 3], $year, $month);
         $total_paid = $this->Web_model->get_monthly_total_amount($member_id, [2], $year, $month);
 
@@ -536,6 +587,26 @@
             'total_paid' => $total_paid,
             'pagination' => $this->pagination->create_links()
         ];
+
+
+        // by DJK 250818 
+        // for period
+        $start_month = date("Y-m");
+        $end_month = date("Y-m", strtotime("+1 month", strtotime($start_month)));
+        $last_month = date("Y-m", strtotime("-1 month", strtotime($start_month)));
+        $start_day = $start_month."-01";
+        $last_day = $last_month."-01";
+        $end_day = $end_month."-01";
+
+        $data['settlements_all'] = $this -> common_model -> make_list("pre_settlements","*"," where member_id = '$member_id' and pre_settlement_date >= '$start_day' and pre_settlement_date < '$end_day'");
+        $total_requested = $this -> common_model -> rowfinder("monthly_total","sum(final_settlement) as st"," where brand_name = '$brand_name' and settlement_month >= '$last_day' and settlement_month < '$start_day'");
+        $total_paid = $this -> common_model -> rowfinder("pre_settlements","sum(application_amount) as st"," where member_id = '$member_id' and pre_settlement_date >= '$start_day' and pre_settlement_date < '$end_day' and status = 2");
+
+        $data['total_requested'] = $total_requested -> st;
+        $data['total_paid'] = $total_paid -> st;
+
+        $data['last_month'] = $last_month;
+        $data['now_month'] = $start_month;
 
         $this->load->view('layout/header');
         $this->load->view('web/mypage', $data);
@@ -606,23 +677,17 @@
         // pre_settlements 테이블에서 brand_name 기준으로 각 쇼핑몰별 마지막 pre_settlement_date 조회
         $sql_last_settlement = "
         (
-            SELECT ps.shopping_mall,
+            SELECT
+                ps.shopping_mall,
                 COALESCE(
                     (
-                        SELECT ps2.pre_settlement_date
+                        SELECT MAX(ps2.pre_settlement_date)
                         FROM pre_settlements ps2
                         WHERE ps2.brand_name = ps.brand_name
-                            AND ps2.shopping_mall = ps.shopping_mall
-                            AND ps2.pre_settlement_date > ps.pre_settlement_date
-                            AND ps2.status NOT IN (1, 2)
-                        ORDER BY ps2.pre_settlement_date DESC
-                        LIMIT 1
+                        AND ps2.shopping_mall = ps.shopping_mall
+                        AND ps2.status IN (1, 2)
                     ),
-                    CASE
-                        WHEN MONTH(ps.pre_settlement_date) = MONTH(CURDATE()) AND YEAR(ps.pre_settlement_date) = YEAR(CURDATE())
-                        THEN ps.pre_settlement_date
-                        ELSE DATE_FORMAT(CURDATE(), '%Y-%m-01')
-                    END
+                    DATE_FORMAT(CURDATE(), '%Y-%m-01')
                 ) AS last_settlement_date
             FROM pre_settlements ps
             WHERE ps.brand_name = ?
@@ -630,7 +695,8 @@
         )
         UNION ALL
         (
-            SELECT f.shopping_mall,
+            SELECT
+                f.shopping_mall,
                 DATE_FORMAT(CURDATE(), '%Y-%m-01') AS last_settlement_date
             FROM fee f
             WHERE f.brand_name = ?
@@ -696,6 +762,7 @@
                 new DateInterval('P1D'),
                 new DateTime(date('Y-m-d', strtotime('+1 day')))
             );
+            // print_r($period); // 디버깅용 출력
 
             $sales_amount = 0;
             $mall_total = 0;
@@ -741,6 +808,7 @@
                 'shopping_mall' => $mall,
                 'pre_settlement_date' => date('Y-m-d')
             ]);
+            $this->db->where_in('status', [0, 1, 2]);
             $exists = $this->db->count_all_results('pre_settlements');
 
             if ($exists == 0) {
@@ -755,7 +823,7 @@
 
         if ($return_var === 0) {
             $this->session->set_userdata('show_result', true);
-            echo json_encode(['status' => 'success', 'message' => '정산이 완료되었습니다.']);
+            echo json_encode(['status' => 'success', 'message' => '조회가 완료되었습니다.']);
         } else {
             echo json_encode([
                 'status' => 'error',
@@ -775,6 +843,97 @@
             'status' => 'success',
             'message' => '신청이 취소되었습니다.'
         ]);
+    }
+
+    function nhistory(){
+
+        $data['start_month'] = date('Y-m');
+        $data['end_month'] = date('Y-m');
+
+        $this->load->view('layout/header');
+        $this->load->view('web/nhistory', $data);
+        $this->load->view('layout/footer');            
+
+    }
+
+    function nhistory_list(){
+
+        $member_id = $this->session->userdata('member_id'); 
+
+        $start = $_POST['start'];
+        $end = $_POST['end'];
+
+        if(!$start){
+            $start = date('Y-m');
+        }
+
+        if(!$end){
+            $end = date('Y-m');
+        }
+
+        $data['start_month'] = $start;
+        $data['end_month'] = $end;
+
+        // 시작과 종료 날짜를 DateTime 객체로 변환
+        $startDate = DateTime::createFromFormat('Y-m', $start);
+        $endDate = DateTime::createFromFormat('Y-m', $end);
+
+        // 현재 날짜를 종료 날짜로 설정
+        $current = clone $endDate;
+
+        while ($current >= $startDate) {
+
+            $start_month = $current->format("Y-m");
+            $end_month = date("Y-m", strtotime("+1 month", strtotime($start_month)));
+
+            $start_day = $start_month."-01";
+            $end_day = $end_month."-01";
+
+
+            $application_amount = $this -> common_model -> rowfinder("pre_settlements","sum(application_amount) as st"," WHERE member_id = '$member_id' and pre_settlement_date >= '$start_day' and pre_settlement_date < '$end_day' and status = 2");
+
+            if($application_amount){
+
+                $pre_settlement_amount = $this -> common_model -> rowfinder("pre_settlements","sum(pre_settlement_amount) as st"," WHERE member_id = '$member_id' and pre_settlement_date >= '$start_day' and pre_settlement_date < '$end_day' and status = 2");
+
+                // 여기서 Daily 로 바뀐다 
+                $daily_settlement = $this -> common_model -> make_list("pre_settlements","distinct pre_settlement_date"," WHERE member_id = '$member_id' and pre_settlement_date >= '$start_day' and pre_settlement_date < '$end_day' and not status = 0");
+
+               foreach($daily_settlement as $rs){
+
+                    $daily_date = $rs -> pre_settlement_date;
+
+                    $daily_application_amount = $this -> common_model -> rowfinder("pre_settlements","sum(application_amount) as st"," WHERE member_id = '$member_id' and pre_settlement_date = '$daily_date' and status = 2");
+
+                    $d_arr[] = array(
+                            "daily_date" => $daily_date,
+                            "daily_application_amount" => $daily_application_amount -> st,
+                            "daily_list" => $this -> common_model -> make_list("pre_settlements","*"," WHERE member_id = '$member_id' and pre_settlement_date = '$daily_date' and not status = 0"),
+                    );
+            
+                }
+
+                $arr[] = array(
+                    "month" => $start_month,
+                    "application_amount" => $application_amount -> st,
+                    "pre_settlement_amount" => $pre_settlement_amount -> st,
+                    "month_list" => $d_arr
+                );
+
+                $d_arr = "";
+
+                                        
+            }
+
+            $current->modify('-1 month');
+
+            $d_arr = array();
+
+        } // while END
+
+        $data['list'] = $arr;
+      
+        $this->load->view('web/nhistory_list', $data);
     }
 
     function history() {
@@ -817,6 +976,67 @@
         $this->load->view('layout/header');
         $this->load->view('web/history', $data);
         $this->load->view('layout/footer');
+    }
+
+    function nlogs(){
+
+        $data['start_month'] = date('Y-m', strtotime("-3 month"));
+        $data['end_month'] = date('Y-m', strtotime("-1 month"));
+
+        $this->load->view('layout/header');
+        $this->load->view('web/nlogs', $data);
+        $this->load->view('layout/footer');
+    }
+
+    function nlogs_list(){
+
+        $brand_name = $this->session->userdata('brand_name'); 
+
+        $start = $_POST['start'];
+        $end = $_POST['end'];
+
+        $data['start_month'] = $start;
+        $data['end_month'] = $end;
+
+        // 시작과 종료 날짜를 DateTime 객체로 변환
+        $startDate = DateTime::createFromFormat('Y-m', $start);
+        $endDate = DateTime::createFromFormat('Y-m', $end);
+
+        // 현재 날짜를 종료 날짜로 설정
+        $current = clone $endDate;
+
+        while ($current >= $startDate) {
+
+            $start_month = $current->format("Y-m");
+            $end_month = date("Y-m", strtotime("+1 month", strtotime($start_month)));
+
+            $start_day = $start_month."-01";
+            $end_day = $end_month."-01";
+
+            $sales_amount = $this -> common_model -> rowfinder("monthly_total","sum(total_sales) as st"," WHERE brand_name = '$brand_name' and settlement_month >= '$start_day' and settlement_month < '$end_day'");
+            $sales_commission = $this -> common_model -> rowfinder("monthly_total","avg(commission_rate) as st"," WHERE brand_name = '$brand_name' and settlement_month >= '$start_day' and settlement_month < '$end_day'");
+            $application_amount = $this -> common_model -> rowfinder("monthly_total","sum(final_settlement) as st"," WHERE brand_name = '$brand_name' and settlement_month >= '$start_day' and settlement_month < '$end_day'");
+
+            if($application_amount){
+
+                $arr[] = array(
+                    "month" => $start_month,
+                    "application_amount" => $application_amount -> st,
+                    "sales_amount" => $sales_amount -> st,
+                    "sales_commission" => round($sales_commission -> st * 100,0),
+                    "month_list" => $this -> common_model -> make_list("monthly_total"," * "," WHERE brand_name = '$brand_name' and settlement_month >= '$start_day' and settlement_month < '$end_day'")
+                );
+
+            }
+
+            $current->modify('-1 month');
+
+        } // while END
+
+        $data['list'] = $arr;  
+                
+        $this->load->view('web/nlogs_list', $data);
+
     }
 
     public function logs()
@@ -943,7 +1163,10 @@
         $this->db->where('status', 0);
         $this->db->delete('pre_settlements');
 
-        redirect('/web/amount');
+        echo "Done";
+
+        // ajax 로 처리하려고, 주석처리 By DJK 250820
+        //redirect('/web/amount');
     }
 
 

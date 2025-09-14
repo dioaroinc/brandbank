@@ -1,4 +1,5 @@
-<div class="container">
+<div class="container_adm">
+
     <div class="c_title">선정산 신청내역</div>
 
     <!-- 검색 영역 -->
@@ -31,8 +32,8 @@
     <!-- 리스트 영역 -->
     <div class="tb_w_green" style="
         text-align: center;
-        width: 1500px;
-        margin: 0 auto;  /* 추가 */
+        width: 1600px;
+        margin: 0px;  /* 추가 */
     ">
         <div class="tr_t", style="text-align: center;">
             <div class="td5">No</div>
@@ -65,7 +66,7 @@
 
                 $display_period = $start_date_obj->format('n/j') . ' ~ ' . $end_date_obj->format('n/j');
             ?>
-            <div class="td" style="text-align: center;">
+            <div class="td" style="text-align: center; <?=$row -> status == 1?"font-weight: bold":""?>">
                 <div class="td5"><?= $no++ ?></div>
                 <div class="td10"><?= htmlspecialchars($row->member_id) ?></div>
                 <div class="td15"><?= htmlspecialchars($row->brand_name) ?></div>

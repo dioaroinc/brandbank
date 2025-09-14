@@ -11,12 +11,12 @@
     <div class="n_c_title_img"><img src="/garage/images/text_type_5.png" /></div>
 
     <div class="n_mypage_m1">
-        <div class="n_mypage_m_l">이번 달 전체 정산액</div>
+        <div class="n_mypage_m_l">일반(월) 정산액 <span>(<?=$last_month?> 기준)</span></div>
         <div class="n_mypage_m_r"><?= number_format($total_requested) ?> <span>원</span></div>
         <div class="clear"></div>
     </div>
     <div class="n_mypage_m2">
-        <div class="n_mypage_m_l">이번 달 선정산 정산액</div>
+        <div class="n_mypage_m_l">이번 달 선정산 지급액 <span>(<?=$now_month?> 기준)</span></div>
         <div class="n_mypage_m_r"><?= number_format($total_paid) ?> <span>원</span></div>
         <div class="clear"></div>
     </div>
@@ -41,13 +41,12 @@
 
         <div class="n_mypage_date">
             <?=substr($settlements_all[0] -> pre_settlement_date, 5,2)?>월
-            <?=substr($settlements_all[0] -> pre_settlement_date, 8,2)?>일
         </div>
         <div class="clear"></div>
 
         <div class="n_mypage_date_lef">
-            <span class="n_mypage_date_lef_span">총 <?=number_format($settlements_all[0] -> application_amount)?></span> 원<br />
-            미리 정산 받았어요.
+            <span class="n_mypage_date_lef_span">총 <?=number_format($total_paid)?></span> 원<br />
+            정산 받았어요.
         </div>
         <div class="clear"></div>
 

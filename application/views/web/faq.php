@@ -25,7 +25,6 @@ $page_url = 'web/faq';
                 <div class="td80" onclick="location.href='<?= base_url('web/faq_view/' . $faq->num) ?>'">
                     <span>Q.</span> <?= htmlspecialchars($faq->title) ?>
                 </div>
-                <div class="td20"><?= date('Y-m-d', strtotime($faq->created_at)) ?></div>
                 <div class="clear"></div>
             </div>
         <?php endforeach; ?>

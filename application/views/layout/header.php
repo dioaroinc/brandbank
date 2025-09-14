@@ -61,8 +61,8 @@
             마이페이지
             <div class="header_m_inner" id="header_menu_1" style="top:100%;left:0;">
                 <div class="<?php echo (isset($active_menu) && $active_menu == 'mypage') ? 'header_m_inner_m_s' : 'header_m_inner_m'; ?>" onclick="location.href='/web/mypage'">마이페이지</div>
-                <div class="<?php echo (isset($active_menu) && $active_menu == 'history') ? 'header_m_inner_m_s' : 'header_m_inner_m'; ?>" onclick="location.href='/web/history'">선정산 신청내역 조회</div>
-                <div class="<?php echo (isset($active_menu) && $active_menu == 'logs') ? 'header_m_inner_m_s' : 'header_m_inner_m'; ?>" onclick="location.href='/web/logs'">일반(월) 정산내역 조회</div>
+                <div class="<?php echo (isset($active_menu) && $active_menu == 'history') ? 'header_m_inner_m_s' : 'header_m_inner_m'; ?>" onclick="location.href='/web/nhistory'">선정산 신청내역 조회</div>
+                <div class="<?php echo (isset($active_menu) && $active_menu == 'logs') ? 'header_m_inner_m_s' : 'header_m_inner_m'; ?>" onclick="location.href='/web/nlogs'">일반(월) 정산내역 조회</div>
             </div>
         </div>
         <?php endif; ?>

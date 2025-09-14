@@ -3,11 +3,15 @@
     <div class="footer_terms_l"><a href="<?= base_url('web/terms'); ?>">서비스 이용약관</a></div>
     <div class="footer_terms_l"><a href="<?= base_url('web/privacy'); ?>">개인정보처리방침</a></div>
     <div class="footer_terms_r">
-        고객문의 070-4015-9373&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E-mail : brandzip@kaangrim.com&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;카카오톡 ID : 칸그림
-        <!-- 우측 하단 카카오톡 아이콘을 같이 둠 -->
-        <a href="http://pf.kakao.com/_CgEdn/chat" target="_blank" style="margin-left:20px; vertical-align:middle;">
-            <img src="/garage/images/kakao_image.png" alt="링크 이미지" style="width: 40px; vertical-align: middle;" />
-        </a>
+        
+        <div class="footer_term_r_m">고객문의 070-4015-9373</div>
+        <div class="footer_term_r_m">E-mail : brandzip@kaangrim.com</div>
+        <div class="footer_term_r_m">카카오톡 ID : 칸그림</div>
+        <div class="footer_term_r_m">
+            <!-- 우측 하단 카카오톡 아이콘을 같이 둠 -->
+            <a href="http://pf.kakao.com/_CgEdn/chat" target="_blank"><img src="/garage/images/kakao_image.png" alt="링크 이미지"  /></a>
+        </div>
+        <div class="clear"></div>
     </div>
     <div class="clear"></div>
     <div class="footer_line">

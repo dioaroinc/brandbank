@@ -169,7 +169,7 @@ if ($reg_date_raw) {
         <div class="bg_bk_alert_new_title">
             <img src="/garage/images/text_type_4.png" />
         </div>
-        <div class="bg_bk_alert_new_x" onclick="submitFormAfterSuccess()"></div>
+        <div class="bg_bk_alert_new_x" onclick="location.reload()"></div>
         <div class="clear"></div>
         <div class="bg_bk_alert_new_body">지금 바로 선정산 신청 내역을 확인해 보세요.</div>
         
@@ -177,7 +177,7 @@ if ($reg_date_raw) {
             <img src="/garage/images/img_type_1.png" />
         </div>
 
-        <div class="bg_bk_confirm_new_orange_long" onclick="location.href='/web/history'">신청내역 확인하기</div>
+        <div class="bg_bk_confirm_new_orange_long" onclick="location.href='/web/nhistory'">신청내역 확인하기</div>
     </div>
 
     <!-- 신청금액 유효성 실패 팝업 -->
@@ -368,7 +368,12 @@ function confirmSubmit() {
     }
 
     // 금액 유효 → 성공 팝업
-    document.getElementById('popup_submit_success').style.display = 'block';
+    // 순서를 바꿔봄 (블록처리)
+    //document.getElementById('popup_submit_success').style.display = 'block';
+
+    submitFormAfterSuccess();
+
+
 }
 
 function submitFormAfterSuccess() {
@@ -381,7 +386,28 @@ function submitFormAfterSuccess() {
         }
     });
 
-    document.getElementById('settlementForm').submit();
+      const formData = $("#settlementForm").serialize(); // 폼 데이터 직렬화
+
+        $.ajax({
+            url: '/web/amount_submit', // 여기에 실제 서버 URL 입력
+            type: 'POST',
+            data: formData,
+            success: function (response) {
+                document.getElementById('popup_submit_success').style.display = 'block';
+            },
+            error: function (xhr, status, error) {
+            console.error('에러 발생:', error);
+            alert('정산 중 오류가 발생했습니다.');
+            }
+        });
+
+
+
+        
+    //document.getElementById('settlementForm').submit();
+
+    // 내가 넣어놓음
+    
 }
 
 //가능금액 ? 팝업
